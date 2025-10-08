@@ -114,7 +114,7 @@ Dự án sử dụng mô hình **Git Flow** với 4 nhánh chính: `main`, `deve
 ## 🌿 Cấu trúc nhánh (Git Flow)
 Dự án sử dụng mô hình Git Flow với 4 nhánh chính:
 
-- **main**  
+- **master**  
   - Chứa mã ổn định, đã kiểm tra, sẵn sàng triển khai lên production.  
   - Chỉ merge từ nhánh `develop` sau khi vượt qua kiểm tra (unit tests, integration tests).  
 
