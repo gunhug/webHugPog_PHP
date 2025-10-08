@@ -104,7 +104,7 @@ Dự án sử dụng mô hình **Git Flow** với 4 nhánh chính: `main`, `deve
 ---
 
 ## 🛠️ Công nghệ sử dụng
-- **Frontend**: HTML, CSS, JavaScript  
+- **Frontend**: HTML, CSS, JavaScript, PHP
 - **Backend**: PHP  
 - **Cơ sở dữ liệu**: MySQL (lưu trữ thông tin người dùng, sản phẩm, đơn hàng, voucher, v.v.)  
 - **Tích hợp thanh toán**: (sẽ bổ sung theo nhu cầu)  
