@@ -1,6 +1,4 @@
 <?php
-// File: project/models/ProductModel.php
-
 require_once __DIR__ . '/../includes/db_connect.php';
 
 class ProductModel
@@ -216,10 +214,6 @@ class ProductModel
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    /**
-     * Hàm lấy tổng số sản phẩm trong bảng products.
-     * @return int Tổng số sản phẩm, hoặc 0 nếu có lỗi.
-     */
     /**
      * Hàm lấy tổng số sản phẩm trong bảng products.
      * SỬ DỤNG MySQLi thông qua hàm db_connect()

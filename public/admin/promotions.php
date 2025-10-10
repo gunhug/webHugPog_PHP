@@ -1,5 +1,4 @@
 <?php
-// Tệp: promotion_management.php (View RẤT MỎNG)
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -10,7 +9,6 @@ $promoController = new PromotionController();
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Controller xử lý toàn bộ logic, lưu session và tự redirect/exit.
     $promoController->handleAdminAction();
 }
 

@@ -1,10 +1,6 @@
 <?php
-// Bắt đầu phiên làm việc
 session_start();
 
-// Nhúng lớp UserModel
-// **CẦN ĐIỀU CHỈNH ĐƯỜNG DẪN nếu cấu trúc thư mục của bạn khác**
-// Giả định file UserModel.php nằm ở thư mục cha của public/
 require_once '../models/UserModel.php';
 
 $userModel = new UserModel();
@@ -33,18 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       // 5. CẬP NHẬT MẬT KHẨU VÀO DATABASE
       if ($userModel->resetPasswordByEmail($email, $new_hashed_password)) {
 
-        // 6. MÔ PHỎNG GỬI EMAIL
-        /*
-                CẢNH BÁO AN TOÀN QUAN TRỌNG:
-                Trong môi trường thực tế, bạn cần sử dụng PHPMailer để gửi email 
-                qua SMTP. 
-                LIÊN KẾT ĐẶT LẠI MẬT KHẨU (token) là phương pháp an toàn hơn 
-                việc gửi mật khẩu tạm thời.
-                */
-
-        // --- KÍCH HOẠT HÀM GỬI EMAIL THỰC TẾ (Nếu đã cấu hình SMTP/PHPMailer) ---
-        // mail($email, "Mật khẩu tạm thời", "Mật khẩu mới: " . $temp_password, "From: noreply@yourdomain.com");
-        // ------------------------------------------------------------------------
 
         // Thay thế thông báo thành công (chỉ dùng khi TEST):
         $success_message = 'Mật khẩu mới đã được cập nhật trong database! Mật khẩu tạm thời (CHỈ DÀNH CHO BẠN TEST) là: <strong>' . htmlspecialchars($temp_password) . '</strong>. Vui lòng thử đăng nhập.';

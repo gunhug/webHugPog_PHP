@@ -1,5 +1,4 @@
 <?php
-// File: project/models/StaffModel.php
 
 require_once __DIR__ . '/../includes/db_connect.php';
 
@@ -189,9 +188,6 @@ class StaffModel
      */
     private function refValues($arr) {
         $refs = [];
-        // Lỗi "Cannot use a scalar value as an array" thường xảy ra ở đây 
-        // nếu $arr không phải là mảng.
-        // Bằng cách gọi is_array() hoặc đảm bảo nó là mảng trước khi gọi, lỗi sẽ được ngăn chặn.
         if (is_array($arr)) {
             foreach($arr as $key => $value) {
                 $refs[$key] = &$arr[$key];

@@ -1,7 +1,5 @@
 <?php
-// File: register.php
 
-// Khởi động session để lưu thông báo thành công (nếu có)
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -11,7 +9,7 @@ require_once __DIR__ . '../../includes/controllers/UserController.php';
 // Khởi tạo Controller
 $userController = new UserController();
 
-// Gọi hàm xử lý đăng ký, hàm này sẽ trả về mảng lỗi (trống nếu thành công hoặc POST chưa được gửi)
+// Gọi hàm xử lý đăng ký, hàm này sẽ trả về mảng lỗi 
 $errors = $userController->handleRegister();
 
 // Xử lý thông báo

@@ -10,10 +10,8 @@ require_once __DIR__ . '../../../models/StaffModel.php';
 $order_model = new OrderModel();
 $products = new ProductModel();
 $user_model = new UserModel();
-$staff_model = new StaffModel(); // Sử dụng EmployeeModel.php
+$staff_model = new StaffModel(); 
 
-// 2. Lấy dữ liệu Thống kê Tổng quan (Summary Stats)
-// *Lưu ý: Các hàm get_total_* đã được giả định bổ sung vào các Model tương ứng.*
 $total_orders = $order_model->getTotalOrders();
 $total_products = $products->getTotalProducts();
 $total_users = $user_model->getTotalUsers(); 
@@ -21,11 +19,9 @@ $total_staff = $staff_model->getTotalStaff();
 $total_revenue_today = $order_model->getTotalRevenueToday();
 $total_revenue_month = $order_model->getTotalRevenueMonth();
 
-// 3. Lấy dữ liệu cho Bảng (Recent Data)
 $recent_orders = $order_model->getRecentOrders(5);
 $recent_products = $products->getRecentProducts(5);
 
-// 4. Lấy dữ liệu cho Biểu đồ Doanh thu (Chart Data)
 $revenue_chart_data = $order_model->getRevenueDataLast30Days();
 
 

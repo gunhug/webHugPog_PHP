@@ -1,5 +1,4 @@
 <?php
-// File: project/public/index.php (Phiên bản Tìm kiếm Nâng cao)
 
 require_once '../includes/controllers/ProductController.php';
 require_once '../includes/controllers/CategoryController.php';

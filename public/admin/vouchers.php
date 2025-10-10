@@ -8,18 +8,10 @@ require_once '../../includes/controllers/VoucherController.php';
 
 $voucherController = new VoucherController();
 
-// =================================================================================
-// LOGIC XỬ LÝ POST REQUEST
-// =================================================================================
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Controller xử lý POST request (Add/Update/Status Toggle) và tự động REDIRECT/EXIT
     $voucherController->handleAdminVoucherAction();
-    // Sau khi xử lý POST và redirect, đoạn mã dưới đây sẽ không chạy
 }
 
-// =================================================================================
-// TẢI DỮ LIỆU VOUCHER VÀ THÔNG BÁO
-// =================================================================================
 $vouchers = $voucherController->listVouchers();
 
 // Lấy thông báo từ session
@@ -33,9 +25,6 @@ if (isset($_SESSION['message'])) {
     unset($_SESSION['message']);
 }
 
-// =================================================================================
-// HÀM HỖ TRỢ HIỂN THỊ (VIEW HELPER FUNCTIONS) - KHÔNG THAY ĐỔI
-// =================================================================================
 
 /**
  * Định dạng giá trị giảm giá (giả định là tiền mặt, cần điều chỉnh nếu là %)

@@ -4,21 +4,17 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// 1. Cấu hình và Nhúng Controller/Model
 require_once '../../includes/config.php';
 require_once '../../includes/controllers/ProductController.php';
 require_once '../../includes/controllers/CategoryController.php';
 
-// 2. KHỞI TẠO CONTROLLER VÀ THIẾT LẬP DỮ LIỆU
 $productController = new ProductController();
 $categoryController = new CategoryController();
 
-// Lấy danh sách sản phẩm và danh mục
 $products = $productController->getProductsForHomePage();
 $categories = $categoryController->listCategories();
 
-// Định nghĩa thư mục lưu trữ file ảnh (Giữ nguyên logic này ở View để đơn giản hóa)
-// Lấy và xóa thông báo sau khi hiển thị (PRG Pattern)
+
 $success_message = $_SESSION['success_message'] ?? null;
 $error_message = $_SESSION['error_message'] ?? null;
 unset($_SESSION['success_message'], $_SESSION['error_message']);

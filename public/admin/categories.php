@@ -8,9 +8,6 @@ require_once '../../includes/controllers/CategoryController.php'; // Sử dụng
 
 $categoryController = new CategoryController();
 
-// =================================================================================
-// LOGIC XỬ LÝ POST REQUEST
-// =================================================================================
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $action_type = $_POST['action_type'] ?? '';

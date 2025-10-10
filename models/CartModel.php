@@ -1,5 +1,4 @@
 <?php
-// File: project/models/CartModel.php
 
 require_once __DIR__ . '/../includes/db_connect.php';
 
@@ -50,11 +49,10 @@ class CartModel
         $stmt->close();
         $conn->close();
 
-        // Nếu không có sản phẩm nào, $row['total_items'] sẽ là NULL, nên ta trả về 0
+        // Nếu không có sản phẩm nào, $row['total_items'] sẽ là NULL, nên trả về 0
         return $row['total_items'] ?? 0;
     }
 
-    // Các hàm để lấy chi tiết giỏ hàng, cập nhật, xóa 
 
     /**
      * Lấy tất cả sản phẩm trong giỏ hàng của user cùng với thông tin chi tiết.

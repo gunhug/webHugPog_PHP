@@ -1,5 +1,4 @@
 <?php
-// File: project/models/OrderModel.php
 
 require_once __DIR__ . '/../includes/db_connect.php';
 
@@ -37,7 +36,6 @@ class OrderModel
             $voucherCode = $voucher['code'] ?? null;
             $discountAmount = $voucher['discount_value'] ?? 0.00;
 
-            // 1. Chèn vào bảng `orders`
             $sqlOrder = "INSERT INTO orders (user_id, customer_name, shipping_address, phone, total_amount, voucher_id, voucher_code, discount_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             $stmtOrder = $conn->prepare($sqlOrder);
             $stmtOrder->bind_param("isssdisd", $userId, $customerName, $shippingAddress, $phone, $totalAmount, $voucherId, $voucherCode, $discountAmount);
@@ -45,7 +43,6 @@ class OrderModel
             $orderId = $conn->insert_id;
             $stmtOrder->close();
 
-            // 2. Chèn vào bảng `order_items` VỚI GIÁ ĐÚNG
             $sqlItem = "INSERT INTO order_items (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)";
             $stmtItem = $conn->prepare($sqlItem);
             foreach ($cartItems as $item) {
@@ -57,7 +54,6 @@ class OrderModel
             }
             $stmtItem->close();
 
-            // 3. Cập nhật số lượng voucher (nếu có)
             if ($voucherId) {
                 $sqlUpdateVoucher = "UPDATE vouchers SET quantity = quantity - 1 WHERE id = ?";
                 $stmtUpdateVoucher = $conn->prepare($sqlUpdateVoucher);
@@ -66,7 +62,6 @@ class OrderModel
                 $stmtUpdateVoucher->close();
             }
 
-            // 4. Xóa giỏ hàng
             $sqlDeleteCart = "DELETE FROM carts WHERE user_id = ?";
             $stmtDeleteCart = $conn->prepare($sqlDeleteCart);
             $stmtDeleteCart->bind_param("i", $userId);
@@ -361,7 +356,7 @@ class OrderModel
      */
     public function getRevenueDataLast30Days()
     {
-        // ... (logic truy vấn doanh thu 30 ngày - xem phần giải thích trong Thought)
+        // logic truy vấn doanh thu 30 ngày
         $conn = db_connect();
         $data = [];
         $today = new DateTime();
@@ -430,10 +425,4 @@ class OrderModel
 
         return $products;
     }
-
-    /**
-     * Lấy thông tin người dùng theo ID.
-     * @param int $userId
-     * @return array|null
-     */
 }

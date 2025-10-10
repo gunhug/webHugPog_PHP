@@ -1,5 +1,4 @@
 <?php
-// File: project/models/VoucherModel.php
 
 require_once __DIR__ . '/../includes/db_connect.php';
 
@@ -47,10 +46,10 @@ class VoucherModel
     {
         $conn = db_connect();
 
-        // Chuẩn hóa định dạng ngày hết hạn (giữ nguyên logic gốc)
+        // Chuẩn hóa định dạng ngày hết hạn 
         $expiry_date = $data['expiry_date'] ?? null;
         if ($expiry_date) {
-            // Xử lý các trường hợp nếu input không đủ giờ phút (chủ yếu là cho input type="date" hoặc nhập tay)
+            // Xử lý các trường hợp nếu input không đủ giờ phút 
             if (preg_match('/^\d{4}$/', $expiry_date)) {
                 $expiry_date = $expiry_date . '-12-31 23:59:59';
             } elseif (preg_match('/^\d{4}-\d{2}-\d{2}$/', $expiry_date)) {
@@ -94,7 +93,6 @@ class VoucherModel
                 WHERE id = ?";
         $stmt = $conn->prepare($sql);
 
-        // Chuỗi bind_param: code(s), discount_value(d), quantity(i), expiry_date(s), status(s), id(i)
         $stmt->bind_param(
             "sdissi", 
             $data['code'],
@@ -106,7 +104,6 @@ class VoucherModel
         );
         $success = $stmt->execute();
 
-        // Kiểm tra lỗi sau khi EXECUTE và ném ngoại lệ để Controller bắt
         if (!$success) {
             $error_message = "Lỗi hệ thống MySQLi: " . $stmt->error;
             error_log("MySQLi Error in updateVoucher: " . $error_message);

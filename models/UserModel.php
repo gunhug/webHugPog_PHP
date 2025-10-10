@@ -1,7 +1,5 @@
 <?php
-// File: project/models/UserModel.php
 
-// Nhúng file kết nối DB để sử dụng hàm db_connect()
 require_once __DIR__ . '/../includes/db_connect.php';
 
 class UserModel
